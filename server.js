@@ -11,7 +11,7 @@ import connectCloudinary from './config/cloudinary.js';
 
 
 const corsOptions = {
-    origin: "http://localhost:3000", 
+    origin: process.env.CLIENT_URL, 
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -56,8 +56,9 @@ io.on("connection", (socket) => {
   // io.to('someUserId').emit("productUpdated", { productId: 1, changes: { name: "Updated Name" } });
 });
 
+const port = process.env.PORT || 5000;
 
-httpServer.listen(5000, () => {
+httpServer.listen(port, () => {
   console.log('Server is running on port 5000');
 });
 
